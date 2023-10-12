@@ -9,35 +9,34 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class AuditoriaRepository : GenericRepository<Auditoria>, IAuditoria
+public class ModuloNotificacionRepository : GenericRepository<ModuloNotificacion>, IModuloNotificacion
 {
     private readonly NotiAppContext _context;
 
-    public AuditoriaRepository(NotiAppContext context) : base(context)
+    public ModuloNotificacionRepository(NotiAppContext context) : base(context)
     {
         _context = context;
     }
-    public override async Task<IEnumerable<Auditoria>> GetAllAsync()
+
+    public override async Task<IEnumerable<ModuloNotificacion>> GetAllAsync()
     {
-        return await _context.Auditorias
-        .Include(a => a.Blockchains)
+        return await _context.ModuloNotificaciones
         .ToListAsync();
     }
-    public override async Task<(int totalRegistros, IEnumerable<Auditoria> registros)> GetAllAsync( //Sobrecarga de metodos
+    public override async Task<(int totalRegistros, IEnumerable<ModuloNotificacion> registros)> GetAllAsync( //Sobrecarga de metodos
         int pageIndex,
         int pageSize,
         string search
     )
     {
-        var query = _context.Auditorias as IQueryable<Auditoria>;
+        var query = _context.ModuloNotificaciones as IQueryable<ModuloNotificacion>;
         if (!string.IsNullOrEmpty(search))
         {
-            query = query.Where(p => p.NombreUsuario.ToLower().Contains(search));
+            query = query.Where(p => p.AsuntoNotificacion.ToLower().Contains(search));
         }
         query = query.OrderBy(p => p.Id);
         var totalRegistros = await query.CountAsync();
         var registros = await query
-            .Include(a => a.Blockchains)
             .Skip((pageIndex - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
