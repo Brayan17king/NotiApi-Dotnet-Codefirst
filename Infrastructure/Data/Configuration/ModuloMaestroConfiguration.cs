@@ -15,7 +15,7 @@ public class ModuloMaestroConfiguration : IEntityTypeConfiguration<ModuloMaestro
         builder.ToTable("modulomaestro");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.Property(x => x.NombreModulo).IsRequired().HasMaxLength(50);
     }

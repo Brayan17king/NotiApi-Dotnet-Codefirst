@@ -15,7 +15,7 @@ public class BlockchainConfiguration : IEntityTypeConfiguration<Blockchain>
         builder.ToTable("blockchain");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.Property(x =>x.HasGenerado).IsRequired().HasMaxLength(50);
         

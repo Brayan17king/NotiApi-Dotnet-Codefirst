@@ -15,7 +15,7 @@ public class ModuloNotificacionConfiguration : IEntityTypeConfiguration<ModuloNo
         builder.ToTable("modulonotificacion");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.Property(x =>x.AsuntoNotificacion).IsRequired().HasMaxLength(50);
         builder.Property(x =>x.TextoNotificacion).IsRequired().HasMaxLength(50);

@@ -11,7 +11,7 @@ namespace Infrastructure.Data.Configuration;
             builder.ToTable("formato");
 
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).HasColumnName("bigint");;
+            builder.Property(x => x.Id);
 
             
             builder.Property(x => x.NombreFormato).IsRequired().HasMaxLength(50);

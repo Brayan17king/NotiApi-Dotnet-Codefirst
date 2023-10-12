@@ -15,7 +15,7 @@ public class HiloRespuestaNotificacionConfiguration : IEntityTypeConfiguration<H
         builder.ToTable("hilorespuestanotificacion");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.Property(x => x.NombreTipo).IsRequired().HasMaxLength(50);
     }

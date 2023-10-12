@@ -15,7 +15,7 @@ public class GenericovsSubmoduloConfiguration : IEntityTypeConfiguration<Generic
         builder.ToTable("genericovssubmodulo");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");;
+        builder.Property(x => x.Id);
 
         builder.HasOne(x => x.Roles).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdRol);
         builder.HasOne(x => x.PermisosGenericos).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdPermisosGenericos);

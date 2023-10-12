@@ -14,9 +14,9 @@ public class AuditoriaConfiguration : IEntityTypeConfiguration<Auditoria>
         builder.ToTable("auditoria");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.Property(x => x.NombreUsuario).IsRequired().HasMaxLength(40);
-        builder.Property(x => x.DesAccion).HasColumnType("bigint");
+        builder.Property(x => x.DesAccion).HasColumnType("int");
     }
 }

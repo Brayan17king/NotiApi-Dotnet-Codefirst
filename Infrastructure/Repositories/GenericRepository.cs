@@ -8,9 +8,9 @@ namespace Infrastructure.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 {
-    private readonly ContextField _context;
+    private readonly NotiAppContext _context;
 
-    public GenericRepository(ContextField context)
+    public GenericRepository(NotiAppContext context)
     {
         _context = context;
     }
@@ -33,16 +33,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public virtual async Task<IEnumerable<T>> GetAllAsync()
     {
         return await _context.Set<T>().ToListAsync();
+        // return (IEnumerable<T>) await _context.Entities.FromSqlRaw("SELECT * FROM entity").ToListAsync();
     }
 
     public virtual async Task<T> GetByIdAsync(int id)
     {
         return await _context.Set<T>().FindAsync(id);
-    }
-
-    public virtual Task<T> GetByIdAsync(string id)
-    {
-        throw new NotImplementedException();
     }
 
     public virtual void Remove(T entity)
@@ -58,5 +54,19 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     public virtual void Update(T entity)
     {
         _context.Set<T>().Update(entity);
+    }
+    public virtual async Task<(int totalRegistros, IEnumerable<T> registros)> GetAllAsync(
+        int pageIndex,
+        int pageSize,
+        string _search
+    )
+    {
+        var totalRegistros = await _context.Set<T>().CountAsync();
+        var registros = await _context
+            .Set<T>()
+            .Skip((pageIndex - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+        return (totalRegistros, registros);
     }
 }

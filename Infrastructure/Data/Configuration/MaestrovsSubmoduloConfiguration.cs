@@ -15,7 +15,7 @@ public class MaestrovsSubmoduloConfiguration : IEntityTypeConfiguration<Maestrov
         builder.ToTable("maestrovssubmodulo");
 
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).HasColumnType("bigint");
+        builder.Property(x => x.Id);
 
         builder.HasOne(x => x.ModuloMaestros).WithMany(x => x.MaestrovsSubmodulos).HasForeignKey(x => x.IdModuloMaestro);
         builder.HasOne(x => x.Submodulos).WithMany(x => x.MaestrovsSubmodulos).HasForeignKey(x => x.IdSubmodulo);
