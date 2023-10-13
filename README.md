@@ -45,6 +45,7 @@ dotnet add reference ..\Core
 ## Proyecto WebApi
 
 ```
+dotnet add package AspNetCoreRateLimit --version 5.0.0
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer --version 7.0.10
 dotnet add package Microsoft.EntityFrameworkCore --version 7.0.10
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 7.0.10
