@@ -10,5 +10,7 @@ namespace API.Dtos
         public int Id { get; set; }
         public string NombreUsuario { get; set; }
         public int DesAccion { get; set; }
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }
     }
 }

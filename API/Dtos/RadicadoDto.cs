@@ -8,5 +8,7 @@ namespace API.Dtos
     public class RadicadoDto
     {
         public int Id { get; set; }
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }        
     }
 }

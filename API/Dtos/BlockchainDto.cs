@@ -12,7 +12,8 @@ namespace API.Dtos
         public int IdHiloRespuestaNotificacion { get; set; }
         public int IdAuditoria { get; set; }
         public int IdTipoNotificacion { get; set; }
-
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }
 
     }
 }

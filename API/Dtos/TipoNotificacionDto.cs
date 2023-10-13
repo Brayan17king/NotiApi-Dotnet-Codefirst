@@ -8,6 +8,8 @@ namespace API.Dtos
     public class TipoNotificacionDto
     {
         public int Id { get; set; }
-         public string NombreTipo { get; set; }
+        public string NombreTipo { get; set; }
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }
     }
 }

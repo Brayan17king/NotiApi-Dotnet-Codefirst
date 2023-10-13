@@ -10,6 +10,7 @@ namespace API.Dtos
         public int Id { get; set; }
         public int IdRol { get; set; }
         public int IdModuloMaestro { get; set; }
-
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }
     }
 }

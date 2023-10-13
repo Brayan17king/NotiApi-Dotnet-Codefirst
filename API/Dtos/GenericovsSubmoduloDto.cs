@@ -11,5 +11,7 @@ namespace API.Dtos
         public int IdRol { get; set; }
         public int IdPermisosGenericos { get; set; }
         public int IdMaestrovsSubmodulo { get; set; }
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }
     }
 }

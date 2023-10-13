@@ -9,5 +9,7 @@ namespace API.Dtos
     {
         public int Id { get; set; }
         public string NombreSubmodulo { get; set; }
+        public DateOnly FechaCreacion { get; set; }
+        public DateOnly FechaModificacion { get; set; }        
     }
 }
