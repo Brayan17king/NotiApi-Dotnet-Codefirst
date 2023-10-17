@@ -132,7 +132,7 @@ dotnet add package CsvHelper --version 30.0.1
 
 #### Directories
 
-https://i.imgur.com/fE83ztj.png
+https://i.imgur.com/ISz0gY6.png
 
 ## API
 
