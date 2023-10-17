@@ -10,7 +10,7 @@ namespace API.Profiles
 {
     public class MappingProfiles : Profile
     {
-        protected MappingProfiles()
+        public MappingProfiles()
         {
             CreateMap<Auditoria, AuditoriaDto>().ReverseMap();
             CreateMap<Blockchain, BlockchainDto>().ReverseMap();
