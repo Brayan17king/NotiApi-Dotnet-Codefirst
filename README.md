@@ -52,7 +52,7 @@
   
   - [Data](#Data)
     
-    - Configuration
+    - [Configuration](#Configuration)
       
       - [ExampleConfiguration.cs](#Configuration)
     
