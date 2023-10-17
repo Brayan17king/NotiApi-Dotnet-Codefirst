@@ -7,14 +7,13 @@ using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers;
 
 public class BlockchainController : BaseController
 {
-    private IUnitOfWork _unitOfWork;
-    private IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
 
     public BlockchainController(IUnitOfWork unitOfWork, IMapper mapper)
     {
@@ -27,22 +26,22 @@ public class BlockchainController : BaseController
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<BlockchainDto>>> Get()
     {
-        var blockchain = await _unitOfWork.Blockchains.GetAllAsync();
-        return _mapper.Map<List<BlockchainDto>>(blockchain);
+        var blockChain = await _unitOfWork.Blockchains.GetAllAsync();
+        return _mapper.Map<List<BlockchainDto>>(blockChain);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<BlockchainDto>> Get(int Id)
+    public async Task<ActionResult<BlockchainDto>> Get(int id)
     {
-        var blockchain = await _unitOfWork.Blockchains.GetByIdAsync(Id);
-        if (blockchain == null)
+        var blockChain = await _unitOfWork.Blockchains.GetByIdAsync(id);
+        if (blockChain == null)
         {
             return NotFound();
         }
-        return _mapper.Map<BlockchainDto>(blockchain);
+        return _mapper.Map<BlockchainDto>(blockChain);
     }
 
     [HttpPost]

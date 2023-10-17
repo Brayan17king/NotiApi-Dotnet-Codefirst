@@ -30,13 +30,13 @@ public class TipoNotificacionesController : BaseController
         return _mapper.Map<List<TipoNotificacionDto>>(tipoNotificaciones);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<TipoNotificacionDto>> Get(int Id)
+    public async Task<ActionResult<TipoNotificacionDto>> Get(int id)
     {
-        var tipoNotificaciones = await _unitOfWork.TipoNotificaciones.GetByIdAsync(Id);
+        var tipoNotificaciones = await _unitOfWork.TipoNotificaciones.GetByIdAsync(id);
         if (tipoNotificaciones == null)
         {
             return NotFound();

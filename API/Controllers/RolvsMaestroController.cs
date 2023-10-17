@@ -30,13 +30,13 @@ public class RolvsMaestroController : BaseController
         return _mapper.Map<List<RolvsMaestroDto>>(rolVsMaestro);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<RolvsMaestroDto>> Get(int Id)
+    public async Task<ActionResult<RolvsMaestroDto>> Get(int id)
     {
-        var rolVsMaestro = await _unitOfWork.RolvsMaestros.GetByIdAsync(Id);
+        var rolVsMaestro = await _unitOfWork.RolvsMaestros.GetByIdAsync(id);
         if (rolVsMaestro == null)
         {
             return NotFound();

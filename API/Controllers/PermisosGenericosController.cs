@@ -30,13 +30,13 @@ public class PermisosGenericosController : BaseController
         return _mapper.Map<List<PermisosGenericoDto>>(permisosGenericos);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<PermisosGenericoDto>> Get(int Id)
+    public async Task<ActionResult<PermisosGenericoDto>> Get(int id)
     {
-        var permisosGenericos = await _unitOfWork.PermisosGenericos.GetByIdAsync(Id);
+        var permisosGenericos = await _unitOfWork.PermisosGenericos.GetByIdAsync(id);
         if (permisosGenericos == null)
         {
             return NotFound();

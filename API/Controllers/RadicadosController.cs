@@ -30,13 +30,13 @@ public class RadicadosController : BaseController
         return _mapper.Map<List<RadicadoDto>>(radicados);
     }
 
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<RadicadoDto>> Get(int Id)
+    public async Task<ActionResult<RadicadoDto>> Get(int id)
     {
-        var radicados = await _unitOfWork.Radicados.GetByIdAsync(Id);
+        var radicados = await _unitOfWork.Radicados.GetByIdAsync(id);
         if (radicados == null)
         {
             return NotFound();
