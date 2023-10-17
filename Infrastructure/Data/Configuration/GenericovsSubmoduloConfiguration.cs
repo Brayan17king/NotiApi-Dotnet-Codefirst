@@ -12,14 +12,23 @@ public class GenericovsSubmoduloConfiguration : IEntityTypeConfiguration<Generic
 {
     public void Configure(EntityTypeBuilder<GenericovsSubmodulo> builder)
     {
-        builder.ToTable("genericovssubmodulo");
+        builder.ToTable("genericovssubmodulos");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id);
 
-        builder.HasOne(x => x.Roles).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdRol);
+        builder.Property(x => x.FechaCreacion).HasColumnType("date");
+
+        builder.Property(x => x.FechaModificacion).HasColumnType("date");
+
+        builder.Property(x => x.IdPermisosGenericos).HasColumnType("int");
         builder.HasOne(x => x.PermisosGenericos).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdPermisosGenericos);
+
+        builder.Property(x => x.IdMaestrovsSubmodulo).HasColumnType("int");
         builder.HasOne(x => x.MaestrovsSubmodulos).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdMaestrovsSubmodulo);
+
+        builder.Property(x => x.IdRol).HasColumnType("int");
+        builder.HasOne(x => x.Roles).WithMany(x => x.GenericovsSubmodulos).HasForeignKey(x => x.IdRol);
 
     }
 }

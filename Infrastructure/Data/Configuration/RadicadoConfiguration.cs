@@ -14,7 +14,11 @@ public class RadicadoConfiguration : IEntityTypeConfiguration<Radicado>
     {
         builder.ToTable("radicados");
 
-        builder.HasKey(r => r.Id);
-        builder.Property(r => r.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id);
+
+        builder.Property(x => x.FechaCreacion).HasColumnType("date");
+
+        builder.Property(x => x.FechaModificacion).HasColumnType("date");
     }
 }

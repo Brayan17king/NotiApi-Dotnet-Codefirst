@@ -12,11 +12,15 @@ public class ModuloMaestroConfiguration : IEntityTypeConfiguration<ModuloMaestro
 {
     public void Configure(EntityTypeBuilder<ModuloMaestro> builder)
     {
-        builder.ToTable("modulomaestro");
+        builder.ToTable("moduulomaestros");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id);
 
         builder.Property(x => x.NombreModulo).IsRequired().HasMaxLength(50);
+
+        builder.Property(x => x.FechaCreacion).HasColumnType("date");
+
+        builder.Property(x => x.FechaModificacion).HasColumnType("date");
     }
 }

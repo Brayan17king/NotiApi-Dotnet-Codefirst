@@ -12,12 +12,16 @@ public class PermisosGenericoConfiguration : IEntityTypeConfiguration<PermisosGe
 {
     public void Configure(EntityTypeBuilder<PermisosGenerico> builder)
     {
-        builder.ToTable("permisosgenerico");
+        builder.ToTable("permisosgenericos");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id);
 
         builder.Property(x => x.MyProperty).IsRequired().HasMaxLength(50);
+
+        builder.Property(x => x.FechaCreacion).HasColumnType("date");
+
+        builder.Property(x => x.FechaModificacion).HasColumnType("date");
     }
 }
 

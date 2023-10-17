@@ -12,13 +12,19 @@ public class MaestrovsSubmoduloConfiguration : IEntityTypeConfiguration<Maestrov
 {
     public void Configure(EntityTypeBuilder<MaestrovsSubmodulo> builder)
     {
-        builder.ToTable("maestrovssubmodulo");
+        builder.ToTable("maestrosvssubmodulos");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id);
 
+        builder.Property(x => x.FechaCreacion).HasColumnType("date");
+
+        builder.Property(x => x.FechaModificacion).HasColumnType("date");
+
+        builder.Property(x => x.IdModuloMaestro).HasColumnType("int");
         builder.HasOne(x => x.ModuloMaestros).WithMany(x => x.MaestrovsSubmodulos).HasForeignKey(x => x.IdModuloMaestro);
-        builder.HasOne(x => x.Submodulos).WithMany(x => x.MaestrovsSubmodulos).HasForeignKey(x => x.IdSubmodulo);
         
+        builder.Property(x => x.IdSubmodulo).HasColumnType("int");
+        builder.HasOne(x => x.Submodulos).WithMany(x => x.MaestrovsSubmodulos).HasForeignKey(x => x.IdSubmodulo);
     }
 }
