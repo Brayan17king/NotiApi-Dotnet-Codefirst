@@ -11,6 +11,8 @@
   4. [Agregar proyectos a la solucion](#Agregar-proyectos-a-la-solucion)
   
   5. [Agregar referencia entre Proyectos](#Agregar-referencia-entre-Proyectos)
+  
+  6. [Realizar la Migracion](#Migración-del-Proyecto)
 
 - [Instalacion de Paquetes](#Instalacion-de-paquetes)
   
@@ -20,11 +22,11 @@
 
 - [API](#API)
   
-  - Controllers
+  - [Controllers](#Controller-Layout)
     
     - [ExampleController.cs](#Controller-Layout)
   
-  - Dtos
+  - [Dtos](#Dtos)
     
     - [ExampleDto.cs](#Dtos)
   
@@ -64,9 +66,15 @@
     
     - [SomeRepository.cs](#GenericRepository)
   
-  - UnitOfWork
+  - [UnitOfWork](#UnitOfWork)
     
     - [UnitOfWork.cs](#UnitOfWork)
+
+- [Migracion del Proyecto](#Migración-del-Proyecto)
+  
+  - [Migracion](#Migración)
+  
+  - [Actualización](#Actualizacion)
 
 ## Project creation
 
@@ -76,14 +84,14 @@
 dotnet new sln
 ```
 
-## Creacion proyecto ClassLib
+# Creacion proyecto ClassLib
 
 ```bash
 dotnet new classlib -o Core
 dotnet new classlib -o Infrastructure
 ```
 
-## Creacion Proyecto WebApi
+# Creacion Proyecto WebApi
 
 ```bash
 dotnet new webapi -o FolderDestino
@@ -94,7 +102,7 @@ El folder destino corresponde a la carpeta donde se creara el proyecto. Se recom
 # Agregar proyectos a la solucion
 
 ```dotnet
-dotnet sln add ApiAnimals
+dotnet sln add API
 dotnet sln add Core
 dotnet sln add Infrastructure
 ```
@@ -388,7 +396,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiAnimals.Helpers;
+namespace API.Helpers;
 
 public class Pager<T> where T : class
 {
@@ -439,7 +447,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiAnimals.Helpers;
+namespace API.Helpers;
 
 public class Params
 {
@@ -1073,4 +1081,18 @@ namespace Infrastructure.UnitOfWork
         }
     }
 }
+```
+
+# Migración del Proyecto
+
+## Migración
+
+```bash
+dotnet ef migrations add InitialCreate --project ./Infraestructure/ --startup-project ./API/ --output-dir ./Data/Migrations
+```
+
+## Actualización
+
+```bash
+dotnet ef database update --project ./Infrastructure/ --startup-project ./API/
 ```
